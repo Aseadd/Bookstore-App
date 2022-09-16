@@ -3,7 +3,7 @@ import React from 'react';
 const Categories = () => {
   return (
     <div>
-      <h1>Categories</h1>
+      <button className="submit">Check Status</button>
     </div>
   );
 };

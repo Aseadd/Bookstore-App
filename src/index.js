@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Books from './components/books';
 import Categories from './components/categories';
 import Navbar from './components/navbar';
-import Footer from './components/footer';
+import './components/styles.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -18,7 +18,6 @@ root.render(
         <Route path="/books" element={<Books />} />
         <Route path="/categories" element={<Categories />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   </React.StrictMode>,
 );
