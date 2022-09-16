@@ -27,7 +27,7 @@ const Book = () => (
           <span className="book-author">{book.author}</span>
         </div>
         <div className="progress">
-          <div className="book-oval"></div>
+          <div className="book-oval" />
           <span className="book-progress">{book.progress}</span>
         </div>
         <div className="book-chapter">
