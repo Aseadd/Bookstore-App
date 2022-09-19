@@ -1,13 +1,13 @@
 const CHECK_STATUS = 'CHECK-STATUS';
 
-const checkStatus = (payload) => ({
+const checkStatus = () => ({
   type: CHECK_STATUS,
   payload: 'Under Construction',
 });
 
 const categories = (state = [], action) => {
   switch (action.type) {
-    case CHECK - STATUS:
+    case CHECK_STATUS:
       return [...state, action.payload];
     default:
       return state;
