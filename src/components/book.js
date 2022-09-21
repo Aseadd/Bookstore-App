@@ -1,17 +1,23 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/books';
+// Progressbar module
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
-const randomCompletion = Math.floor(Math.random() * 100);
-const chapter = Math.floor(Math.random() * 20) + 1;
-const percent = '%';
+import {
+  removeBooksFromApi,
+  randomCompletion,
+  chapter,
+} from '../redux/books/books';
+
+const percentage = 66;
 
 function Book(props) {
   const { id, title, author } = props;
   const dispatch = useDispatch();
   const handleRemoveBook = () => {
-    dispatch(removeBook(id));
+    dispatch(removeBooksFromApi(id));
   };
   return (
     <section className="container">
@@ -40,15 +46,19 @@ function Book(props) {
               aria-valuemin="0"
               aria-valuemax="100"
             >
-              {randomCompletion}
-              {percent}
+              <Example label="Animated Progress Provider">
+                <CircularProgressbar
+                  value={randomCompletion}
+                  text={`${percentage}%`}
+                />
+              </Example>
             </div>
           </div>
           <div className="book-progress-info">
             <span className="book-progress-title">CURRENT CHAPTER</span>
             <span className="book-progress-chapter">
               &nbsp;
-              {chapter}
+              {chapter()}
             </span>
             <button type="button" className="book-update">
               UPDATE PROGRESS
@@ -61,9 +71,27 @@ function Book(props) {
 }
 
 Book.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+};
+function Example(props) {
+  const { label } = props;
+  return (
+    <div style={{ marginBottom: 80 }}>
+      <hr style={{ border: '2px solid #ddd' }} />
+      <div style={{ marginTop: 30, display: 'flex' }}>
+        <div style={{ width: '30%', paddingRight: 30 }}> x</div>
+        <div style={{ width: '70%' }}>
+          <h3 className="h5">{label}</h3>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Example.propTypes = {
+  label: PropTypes.string.isRequired,
 };
 
 export default Book;
