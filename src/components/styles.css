@@ -238,9 +238,10 @@
   padding-right: 5px;
 }
 
-.comment, .remove, .edit {
+.comment,
+.remove,
+.edit {
   width: 5.5rem;
   padding-right: 5px;
   margin-right: 5px;
 }
-
