@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { addBook } from '../redux/books/books';
+import { addBooks } from '../redux/books/books';
 
 function BookAdd() {
   const [title, setTitle] = useState('');
@@ -19,11 +19,11 @@ function BookAdd() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBook = {
-      id: uuidv4(),
+      item_id: uuidv4(),
       title,
       author,
     };
-    dispatch(addBook(newBook));
+    dispatch(addBooks(newBook));
     setTitle('');
     setAuthor('');
   };

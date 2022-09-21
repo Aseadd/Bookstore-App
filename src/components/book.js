@@ -1,17 +1,18 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/books';
+import { removeBookFromApi } from '../redux/books/books';
 
 const randomCompletion = Math.floor(Math.random() * 100);
 const chapter = Math.floor(Math.random() * 20) + 1;
 const percent = '%';
 
 function Book(props) {
-  const { id, title, author } = props;
+  const { item_id, title, author } = props;
   const dispatch = useDispatch();
-  const handleRemoveBook = () => {
-    dispatch(removeBook(id));
+  const handleRemoveBook = (id) => {
+    dispatch(removeBookFromApi(id));
   };
   return (
     <section className="container">
@@ -23,7 +24,11 @@ function Book(props) {
             <button type="button" className="comment">
               Comment
             </button>
-            <button type="button" className="remove" onClick={handleRemoveBook}>
+            <button
+              type="button"
+              className="remove"
+              onClick={handleRemoveBook(item_id)}
+            >
               Remove
             </button>
             <button type="button" className="edit">
@@ -61,7 +66,7 @@ function Book(props) {
 }
 
 Book.propTypes = {
-  id: PropTypes.number.isRequired,
+  item_id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
 };
