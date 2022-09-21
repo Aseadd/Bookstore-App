@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 
-const Navbar = () => {
+function Navbar() {
   const links = [
     { id: 1, name: 'books', path: '/' },
     { id: 2, name: 'categories', path: '/categories' },
@@ -15,9 +15,7 @@ const Navbar = () => {
         </li>
         {links.map((link) => (
           <li key={link.id} className="nav-item">
-            <NavLink to={link.path} activeClassName="active" exact>
-              {link.name}
-            </NavLink>
+            <NavLink to={link.path}>{link.name}</NavLink>
           </li>
         ))}
       </ul>
@@ -26,6 +24,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;
