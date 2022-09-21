@@ -5,7 +5,7 @@ const checkStatus = () => ({
   payload: 'Under Construction',
 });
 
-const categories = (state = [], action) => {
+const categories = (state = [], action = {}) => {
   switch (action.type) {
     case CHECK_STATUS:
       return [...state, action.payload];
@@ -14,5 +14,5 @@ const categories = (state = [], action) => {
   }
 };
 
-exports = { checkStatus };
+export { checkStatus };
 export default categories;

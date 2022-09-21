@@ -1,16 +1,61 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { addBook } from '../redux/books/books';
 
-const BookAdd = () => (
-  <div className="add-book">
-    <h1 className="add-book-title">ADD NEW BOOK</h1>
-    <form className="add-book-form">
-      <input type="text" placeholder="Book title" className="title" />
-      <input type="text" placeholder="Author" className="author" />
-      <button type="submit" className="submit">
-        ADD BOOK
-      </button>
-    </form>
-  </div>
-);
+function BookAdd() {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const dispatch = useDispatch();
+
+  const onTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const onAuthorChange = (e) => {
+    setAuthor(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newBook = {
+      id: uuidv4(),
+      title,
+      author,
+    };
+    dispatch(addBook(newBook));
+    setTitle('');
+    setAuthor('');
+  };
+
+  return (
+    <section className="add-book">
+      <h1 className="add-book-title">ADD NEW BOOK</h1>
+      <form className="add-book-form">
+        <input
+          type="text"
+          className="title"
+          id="form-title"
+          placeholder="Book title"
+          value={title}
+          onChange={onTitleChange}
+          onBlur={onTitleChange}
+        />
+        <input
+          type="text"
+          className="author"
+          id="form-author"
+          placeholder="Author"
+          value={author}
+          onChange={onAuthorChange}
+          onBlur={onAuthorChange}
+        />
+        <button type="submit" className="submit" onClick={handleSubmit}>
+          ADD BOOK
+        </button>
+      </form>
+    </section>
+  );
+}
 
 export default BookAdd;

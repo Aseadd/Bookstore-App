@@ -1,10 +1,14 @@
 import React from 'react';
-import Book from './book';
+import BookCollection from './bookCollection';
+import BookAdd from './bookAdd';
 
-const Books = () => (
-  <div>
-    <Book />
-  </div>
-);
+function Books() {
+  return (
+    <div className="container">
+      <BookCollection />
+      <BookAdd />
+    </div>
+  );
+}
 
 export default Books;

@@ -1,47 +1,69 @@
 import React from 'react';
-import BookAdd from './bookAdd';
+import { PropTypes } from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/books';
 
-const bookList = [
-  {
-    genre: 'Action',
-    title: 'The Hunger Games',
-    author: 'Suzanne Collins',
-    progress: '64%',
-    currentChapter: 'Chapter 17',
-  },
-  {
-    genre: 'Science Fiction',
-    title: 'Dune',
-    author: 'Frank Herbert',
-    progress: '8%',
-    currentChapter: 'Chapter 3: "A Lesson Learned"',
-  },
-];
-function Book() {
+const randomCompletion = Math.floor(Math.random() * 100);
+const chapter = Math.floor(Math.random() * 20) + 1;
+const percent = '%';
+
+function Book(props) {
+  const { id, title, author } = props;
+  const dispatch = useDispatch();
+  const handleRemoveBook = () => {
+    dispatch(removeBook(id));
+  };
   return (
-    <div className="container">
-      {bookList.map((book) => (
-        <div className="book" key={book.title}>
-          <div className="book-info">
-            <span className="book-genre">{book.genre}</span>
-            <span className="book-title">{book.title}</span>
-            <span className="book-author">{book.author}</span>
-          </div>
-          <div className="progress">
-            <div className="book-oval" />
-            <span className="book-progress">{book.progress}</span>
-          </div>
-          <div className="book-chapter">
-            <span className="book-current-chapter">{book.currentChapter}</span>
-            <button type="button" className="book-update">
-              UPDATE PROGRES
+    <section className="container">
+      <div className="book">
+        <div className="book-info">
+          <span className="book-title">{title}</span>
+          <span className="book-author">{author}</span>
+          <div className="book-buttons">
+            <button type="button" className="comment">
+              Comment
+            </button>
+            <button type="button" className="remove" onClick={handleRemoveBook}>
+              Remove
+            </button>
+            <button type="button" className="edit">
+              Edit
             </button>
           </div>
         </div>
-      ))}
-      <BookAdd />
-    </div>
+        <div className="progress">
+          <div className="book-progress">
+            <div
+              className="book-progress"
+              role="progressbar"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              {randomCompletion}
+              {percent}
+            </div>
+          </div>
+          <div className="book-progress-info">
+            <span className="book-progress-title">CURRENT CHAPTER</span>
+            <span className="book-progress-chapter">
+              &nbsp;
+              {chapter}
+            </span>
+            <button type="button" className="book-update">
+              UPDATE PROGRESS
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
+
+Book.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+};
 
 export default Book;
