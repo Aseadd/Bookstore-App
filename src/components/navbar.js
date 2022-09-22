@@ -11,7 +11,9 @@ function Navbar() {
     <nav className="nav-bar">
       <ul className="nav-link">
         <li className="nav-item nav-title">
-          <a href={links[0].path}>Bookstore CMS</a>
+          <a href={links[0].path} className="logo-text">
+            Bookstore CMS
+          </a>
         </li>
         {links.map((link) => (
           <li key={link.id} className="nav-item">
