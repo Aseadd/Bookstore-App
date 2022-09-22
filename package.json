@@ -1,6 +1,7 @@
 {
   "name": "bookstore-app",
   "version": "0.1.0",
+  "homepage": "https://Aseadd.github.io/bookstore-app",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
