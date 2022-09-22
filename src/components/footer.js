@@ -1,9 +1,15 @@
 import React from 'react';
 import './styles.css';
 
-const Footer = () => (
-  <nav className="footer">
-    <p className="text-center">@Copy right 2022 --- Book Store</p>
-  </nav>
-);
+function Footer() {
+  const date = new Date();
+  return (
+    <nav className="footer">
+      <p className="text-center">
+        Copyright © --- Book Store App &nbsp;
+        {date.getFullYear()}
+      </p>
+    </nav>
+  );
+}
 export default Footer;

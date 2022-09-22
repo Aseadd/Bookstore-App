@@ -4,8 +4,8 @@ import { FaUserAlt } from 'react-icons/fa';
 
 function Navbar() {
   const links = [
-    { id: 1, name: 'books', path: '/' },
-    { id: 2, name: 'categories', path: '/categories' },
+    { id: 1, name: 'Books', path: '/' },
+    { id: 2, name: 'Categories', path: '/categories' },
   ];
   return (
     <nav className="nav-bar">
@@ -20,7 +20,7 @@ function Navbar() {
         ))}
       </ul>
       <div className="user">
-        <FaUserAlt />
+        <FaUserAlt className="user-icon" />
       </div>
     </nav>
   );

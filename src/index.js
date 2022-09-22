@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import Books from './components/books';
 import Categories from './components/categories';
 import Navbar from './components/navbar';
+import Footer from './components/footer';
 import './components/styles.css';
 import './index.css';
 import store from './redux/configureStore';
@@ -21,6 +22,7 @@ root.render(
           <Route path="/categories" element={<Categories />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </Provider>
   </React.StrictMode>,
 );

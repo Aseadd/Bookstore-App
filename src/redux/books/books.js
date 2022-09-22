@@ -11,18 +11,6 @@ const bookUrl =
 
 const books = [];
 
-const addBook = (payload) => ({
-  type: ADD_BOOK,
-  payload,
-});
-
-const removeBook = (payload) => ({
-  type: REMOVE_BOOK,
-  payload,
-  randomCompletion,
-  chapter,
-});
-
 const fetchBook = (payload) => ({
   type: FETCH_BOOKS,
   payload,
@@ -32,7 +20,11 @@ const getBooks = () => async (dispatch) => {
   const books = await axios.get(bookUrl);
   const booksFetched = Object.entries(books.data).map((item) => {
     const { title, author } = item[1][0];
-    return { id: item[0], title, author };
+    return {
+      id: item[0],
+      title,
+      author,
+    };
   });
   dispatch(fetchBook(booksFetched));
 };
@@ -45,12 +37,18 @@ const addBooksToApi = (book) => async (dispatch) => {
     category: 'Action',
   };
   await axios.post(bookUrl, newBook);
-  dispatch(addBook(book));
+  dispatch({
+    type: ADD_BOOK,
+    payload: book,
+  });
 };
 
 const removeBooksFromApi = (book) => async (dispatch) => {
   await axios.delete(`${bookUrl}${book.id}`);
-  dispatch(removeBook(book));
+  dispatch({
+    type: REMOVE_BOOK,
+    payload: book,
+  });
 };
 const booksReducer = (state = books, action = {}) => {
   switch (action.type) {
@@ -65,5 +63,5 @@ const booksReducer = (state = books, action = {}) => {
   }
 };
 
-export { getBooks, addBooksToApi, removeBooksFromApi };
+export { addBooksToApi, removeBooksFromApi, getBooks };
 export default booksReducer;

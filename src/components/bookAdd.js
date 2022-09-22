@@ -22,6 +22,7 @@ function BookAdd() {
       id: uuidv4(),
       title,
       author,
+      category: 'Action',
     };
     dispatch(addBooksToApi(newBook));
     setTitle('');
