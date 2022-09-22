@@ -1,17 +1,14 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/books';
-
-const randomCompletion = Math.floor(Math.random() * 100);
-const chapter = Math.floor(Math.random() * 20) + 1;
-const percent = '%';
+import { removeBooksFromApi, chapter } from '../redux/books/books';
+import CircularStatic from './progressBar';
 
 function Book(props) {
   const { id, title, author } = props;
   const dispatch = useDispatch();
   const handleRemoveBook = () => {
-    dispatch(removeBook(id));
+    dispatch(removeBooksFromApi(id));
   };
   return (
     <section className="container">
@@ -40,16 +37,12 @@ function Book(props) {
               aria-valuemin="0"
               aria-valuemax="100"
             >
-              {randomCompletion}
-              {percent}
+              <CircularStatic />
             </div>
           </div>
           <div className="book-progress-info">
             <span className="book-progress-title">CURRENT CHAPTER</span>
-            <span className="book-progress-chapter">
-              &nbsp;
-              {chapter}
-            </span>
+            <span className="book-progress-chapter">{`Chapter ${chapter()}`}</span>
             <button type="button" className="book-update">
               UPDATE PROGRESS
             </button>
@@ -61,7 +54,7 @@ function Book(props) {
 }
 
 Book.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
 };
