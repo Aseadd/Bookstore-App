@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBooksFromApi, chapter } from '../redux/books/books';
+import { removeBooksFromApi, chapter, editBook } from '../redux/books/books';
 import CircularStatic from './progressBar';
 
 function Book(props) {
@@ -9,6 +9,14 @@ function Book(props) {
   const dispatch = useDispatch();
   const handleRemoveBook = () => {
     dispatch(removeBooksFromApi(id));
+  };
+  const handleEditBook = () => {
+    dispatch(editBook(id));
+    const editlabel = document.querySelector('.edit-label');
+    editlabel.classList.add('show');
+    setTimeout(() => {
+      editlabel.classList.remove('show');
+    }, 3000);
   };
   return (
     <section className="container">
@@ -23,7 +31,7 @@ function Book(props) {
             <button type="button" className="remove" onClick={handleRemoveBook}>
               Remove
             </button>
-            <button type="button" className="edit">
+            <button type="button" className="edit" onClick={handleEditBook}>
               Edit
             </button>
           </div>

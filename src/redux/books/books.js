@@ -3,16 +3,22 @@ import axios from 'axios';
 const ADD_BOOK = 'bookStore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
 const FETCH_BOOKS = 'bookStore/books/FETCH_BOOKS';
+const EDIT_BOOK = 'bookStore/books/EDIT_BOOK';
 export const randomCompletion = () => Math.floor(Math.random() * 100);
 export const chapter = () => Math.floor(Math.random() * 20) + 1;
 // eslint-disable-next-line
 const bookUrl =
-  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xB1q8AMuosJnQjqhWXrE/books/';
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/GQNZgO2lkYxh8W1hsS4k/books/';
 
 const books = [];
 
 const fetchBook = (payload) => ({
   type: FETCH_BOOKS,
+  payload,
+});
+
+export const editBook = (payload) => ({
+  type: EDIT_BOOK,
   payload,
 });
 
@@ -58,6 +64,16 @@ const booksReducer = (state = books, action = {}) => {
       return state.filter((book) => book.id !== action.payload);
     case FETCH_BOOKS:
       return action.payload;
+    case EDIT_BOOK:
+      return state.map((book) => {
+        if (book.id === action.payload.id) {
+          return {
+            ...book,
+            title: action.payload.title,
+          };
+        }
+        return book;
+      });
     default:
       return state;
   }
