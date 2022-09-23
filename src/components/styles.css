@@ -386,11 +386,9 @@ body {
     color: #121212;
   }
 
-
   .book-progress-info {
     display: flex;
     flex-direction: column;
-    
   }
 
   .book-update {
@@ -412,5 +410,4 @@ body {
     justify-content: center;
     background: #fff;
   }
-
 }
