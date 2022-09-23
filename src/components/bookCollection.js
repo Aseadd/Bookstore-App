@@ -5,7 +5,7 @@ import Book from './book';
 function BookCollection() {
   const bookList = useSelector((state) => state.booksReducer);
   return (
-    <div className="container">
+    <div>
       {bookList.map((book) => (
         <Book
           key={book.id}

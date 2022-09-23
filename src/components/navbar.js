@@ -7,19 +7,25 @@ function Navbar() {
     { id: 1, name: 'Books', path: '/' },
     { id: 2, name: 'Categories', path: '/categories' },
   ];
+
   return (
-    <nav className="nav-bar">
-      <ul className="nav-link">
-        <li className="nav-item nav-title">
-          <a href={links[0].path}>Bookstore CMS</a>
-        </li>
+    <nav>
+      <div className="logo">
+        <span> Book Store CMS</span>
+      </div>
+      <div className="hamburger">
+        <div className="line1" />
+        <div className="line2" />
+        <div className="line3" />
+      </div>
+      <ul className="nav-links">
         {links.map((link) => (
-          <li key={link.id} className="nav-item">
+          <li key={link.id}>
             <NavLink to={link.path}>{link.name}</NavLink>
           </li>
         ))}
       </ul>
-      <div className="user">
+      <div className="profile-button">
         <FaUserAlt className="user-icon" />
       </div>
     </nav>

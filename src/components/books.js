@@ -4,7 +4,7 @@ import BookAdd from './bookAdd';
 
 function Books() {
   return (
-    <div className="container">
+    <div className="books-container">
       <BookCollection />
       <BookAdd />
     </div>

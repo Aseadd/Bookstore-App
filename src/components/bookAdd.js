@@ -18,15 +18,23 @@ function BookAdd() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newBook = {
-      id: uuidv4(),
-      title,
-      author,
-      category: 'Action',
-    };
-    dispatch(addBooksToApi(newBook));
-    setTitle('');
-    setAuthor('');
+    if (title && author) {
+      const newBook = {
+        id: uuidv4(),
+        title,
+        author,
+        category: 'Action',
+      };
+      dispatch(addBooksToApi(newBook));
+      setTitle('');
+      setAuthor('');
+    } else {
+      const error = document.querySelector('.error');
+      error.classList.add('show');
+      setTimeout(() => {
+        error.classList.remove('show');
+      }, 3000);
+    }
   };
 
   return (
@@ -55,6 +63,7 @@ function BookAdd() {
           ADD BOOK
         </button>
       </form>
+      <div className="error">Please fill all fields</div>
     </section>
   );
 }

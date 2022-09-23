@@ -7,7 +7,7 @@ export const randomCompletion = () => Math.floor(Math.random() * 100);
 export const chapter = () => Math.floor(Math.random() * 20) + 1;
 // eslint-disable-next-line
 const bookUrl =
-  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xB1q8AMuosJnQjqhWXrE/books/';
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/GQNZgO2lkYxh8W1hsS4k/books/';
 
 const books = [];
 
