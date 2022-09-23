@@ -12,78 +12,6 @@ body {
   background-color: #f5f6fa;
 }
 
-.nav-bar {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background-color: #fff;
-  height: 4.938rem;
-}
-
-.nav-link {
-  color: #121212;
-  text-decoration: none;
-  padding: 10px 20px;
-  display: block;
-}
-
-.nav-item {
-  display: inline-block;
-  margin-left: 3rem;
-}
-
-.nav-item:hover {
-  background: #ffbe72;
-  border-radius: 10px;
-}
-
-.nav-item > a {
-  color: #121212;
-  text-decoration: none;
-  padding: 10px 15px;
-  display: block;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.nav-title > a {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-left: auto;
-  color: #0290ff;
-}
-
-.nav-item > a:hover {
-  color: #000;
-}
-
-.active-link {
-  color: orangered;
-  text-decoration: underline;
-}
-
-.logo {
-  font-weight: bold;
-  text-decoration: none;
-  color: #0290ff;
-}
-
-.user {
-  width: 2.813rem;
-  height: 2.813rem;
-  margin: 0.75rem 5rem 0 37.5rem;
-  padding: 0.875rem;
-  border: none;
-}
-
-.user-icon {
-  color: #0290ff;
-}
-
-.user-icon:hover {
-  color: #09e85e;
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -95,7 +23,7 @@ body {
 .book {
   display: flex;
   flex-direction: row;
-  width: 75rem;
+  width: 85vw;
   height: 10.625rem;
   margin: 0.313rem 4.25rem 0;
   padding: 2rem 9.188rem 1.625rem 1.688rem;
@@ -236,14 +164,14 @@ body {
 }
 
 .book-update {
-  width: 11.5rem;
+  width: 13.5vw;
   height: 2.063rem;
   padding: 0.438rem 1.188rem 0.5rem 1.375rem;
   border: none;
   border-radius: 7px;
   background-color: #0290ff;
   font-family: RobotoSlab, sans-serif;
-  font-size: 0.813rem;
+  font-size: 0.913vw;
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
@@ -296,6 +224,7 @@ body {
   font-family: Montserrat, sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
+  margin-left: 7vw;
 }
 
 .title {
@@ -380,40 +309,33 @@ body {
     width: 350px;
   }
 
+  .books-container {
+    width: 350px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .book {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+    justify-content: center;
+    align-items: center;
   }
 
   .book-info {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    width: 100%;
-  }
-
-  .book-genre {
-    height: 1.125rem;
-    margin: 0 2.438rem 0 0;
-    opacity: 0.5;
-    font-family: Montserrat, sans-serif;
-    font-size: 0.875rem;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #121212;
   }
 
   .book-title {
+    width: max-content;
     height: 1.813rem;
-    margin: 0.188rem 20.188rem 0 0;
+    margin: 0.188rem 0.188rem 0 0;
     font-family: RobotoSlab, serif;
     font-size: 1.375rem;
     font-weight: bold;
@@ -437,27 +359,58 @@ body {
     color: #4386bf;
   }
 
+  .book-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
   .progress {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 50%;
+    gap: 4rem;
   }
+
+  .book-progress {
+    margin: 0.063rem 0.75rem 0 0.188rem;
+    font-family: Montserrat, sans-serif;
+    font-size: -0.5rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #121212;
+  }
+
 
   .book-progress-info {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    width: 100%;
+    
   }
 
-  .book-oval {
-    width: 4.25rem;
-    height: 4.25rem;
-    border: solid 5px #e8e8e8;
+  .book-update {
+    width: fit-content;
+    font-size: 0.5rem;
   }
 
-  .book-progress {
-    height: 2.438rem;
-    margin: 0.063rem 5.438rem 0 0;
+  .add-book {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
   }
+
+  .add-book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    background: #fff;
+  }
+
 }

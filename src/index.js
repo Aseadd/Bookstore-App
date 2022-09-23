@@ -9,6 +9,7 @@ import Footer from './components/footer';
 import './components/styles.css';
 import './index.css';
 import store from './redux/configureStore';
+import './components/navbar.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
